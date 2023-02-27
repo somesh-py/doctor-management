@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+#btn
+{
+   border:0px;
+   text-align:center;
+   margin-left:40px;
+   height:50px; 
+   width:80px;
+   border-radius:40px;
+   background-color:silver;
+}
+#btnr
+{
+  position: absolute;
+  margin-left:1100px;
+  margin-top:-50px;
+  text-decoration:none;
+}
+
+#btnrr
+{
+  border:0px;
+   text-align:center;
+   height:30px; 
+   width:80px;
+   border-radius:40px;
+   background-color:lightblue;
+}
+</style>
+</head>
+<body>
+
+<h1>Doctors Details</h1>
+<h5 id="btnr">got to registration page &nbsp;<button id="btnrr"><a href='/'>registration</a></button></h5>
+<form>
+<table id="customers">
+  <tr>
+    <th>Name</th>
+    <th>Degree</th>
+    <th>Contact</th>
+    <th>Email</th>
+    <th>Image</th>
+    <th>Catagory</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  {% if ddata %}
+  {% for i in ddata %}
+  <tr>
+    <td>{{i.name}}</td>
+    <td>{{i.degree}}</td>
+    <td>{{i.contact}}</td>
+    <td>{{i.email}}</td>
+    <td><img src="{{ i.image.url }}" alt="img" width="80px" height="100px"></td>
+    <td>{{i.catagory}}</td>
+    <td><button id="btn"><a href='/update/{{i.id}}' >edit</a></button></td>
+    <td><button id="btn"><a href='/delete/{{i.id}}' >Delete</a></button></td>        
+  </tr>
+  {% endfor %}
+  {% endif %}
+</table>
+</form>
+</body>
+</html>
+
+

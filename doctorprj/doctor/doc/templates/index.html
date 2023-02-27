@@ -73,11 +73,11 @@ a {
 {% endfor %}
 {% endif %}
 
-<form method="post" action="/registration/">
+<form method="post" action="/registration/" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="container">
     <h1>Register</h1>
-    <p>Please fill in this form to create an account.</p>
+    <p>Please fill in this form to register yourself.</p>
     <hr>
 
     <label for="email"><b>Name</b></label>
@@ -97,7 +97,7 @@ a {
 
 
     <label for="email"><b>Image</b></label>
-    <input type="file" placeholder="Enter Image" name="image" id="email" required><br><br>
+    <input type="file" placeholder="Enter Image" name="imaged" id="email" required><br><br>
 
     <label for="email"><b>Catagory</b></label>
     <select name="catagory">
@@ -116,7 +116,7 @@ a {
   </div>
   
   <div class="container signin">
-    <p>Already have an account? <a href="#">Sign in</a>.</p>
+    <p>Already have an account? <a href="/login/">login</a>.</p>
   </div>
 </form>
 
