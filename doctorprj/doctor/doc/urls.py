@@ -3,10 +3,10 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
-    path('', views.index),
-    path('registration/', views.registration),
-    path('login/', views.login),
+    path('', views.login),
     path('logindata/', views.logindata),
+    path('reg/', views.registration),
+    path('registration/', views.registrationdata),
     path('table/',views.table),
     path('update/<int:tid>/',views.update),
     path('updatedata/',views.updatedata),

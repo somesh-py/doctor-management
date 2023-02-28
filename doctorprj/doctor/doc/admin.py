@@ -6,3 +6,6 @@ from .models import *
 class DoctorAdmin(admin.ModelAdmin):
     list_display=['name','degree','contact','email','password','image','catagory']
     
+@admin.register(Mainuser)
+class MainuserAdmin(admin.ModelAdmin):
+    list_display=['contact','email','password']

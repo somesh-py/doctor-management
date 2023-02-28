@@ -16,4 +16,8 @@ class Doctor(models.Model):
     password=models.CharField(max_length=50)
     image=models.ImageField(upload_to='docimage/')
     catagory=models.CharField(choices=CHOICE_COURSE,max_length=50)
-    
+
+class Mainuser(models.Model):
+    contact=models.IntegerField()
+    email=models.EmailField(max_length=254)    
+    password=models.CharField(max_length=50)
