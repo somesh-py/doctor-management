@@ -11,5 +11,6 @@ urlpatterns = [
     path('update/<int:tid>/',views.update),
     path('updatedata/',views.updatedata),
     path('delete/<int:tid>/',views.delete),
-    
+    path('urltable/',views.urltable),
+    path('urlregistration/',views.urlregistration),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

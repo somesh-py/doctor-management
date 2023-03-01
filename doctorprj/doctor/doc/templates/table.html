@@ -57,7 +57,7 @@
 <body>
 
 <h1>Doctors Details</h1>
-<h5 id="btnr">got to registration page &nbsp;<button id="btnrr"><a href='/'>registration</a></button></h5>
+<h5 id="btnr">got to registration page &nbsp;<button id="btnrr"><a href='/urlregistration/'>registration</a></button></h5>
 <form>
 <table id="customers">
   <tr>
@@ -72,6 +72,7 @@
   </tr>
   {% if ddata %}
   {% for i in ddata %}
+  
   <tr>
     <td>{{i.name}}</td>
     <td>{{i.degree}}</td>
@@ -82,6 +83,7 @@
     <td><button id="btn"><a href='/update/{{i.id}}' >edit</a></button></td>
     <td><button id="btn"><a href='/delete/{{i.id}}' >Delete</a></button></td>        
   </tr>
+  
   {% endfor %}
   {% endif %}
 </table>

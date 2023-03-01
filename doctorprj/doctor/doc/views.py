@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+
 def login(request):
     return render(request, 'login.html')
 
@@ -32,8 +33,9 @@ def logindata(request):
             return redirect('/')
 
 
+@login_required(login_url='/')
 def registration(request):
-    return render(request,'registration.html')
+    return render(request, 'registration.html')
 
 
 def registrationdata(request):
@@ -58,7 +60,7 @@ def registrationdata(request):
             return render(request, 'table.html', {'ddata': doctordata})
 
 
-@login_required(login_url='/login/')
+@login_required(login_url='/')
 def table(request):
     doctordata = Doctor.objects.all()
     return render(request, 'table.html', {'ddata': doctordata})
@@ -66,7 +68,8 @@ def table(request):
 
 def update(request, tid):
     tid = Doctor.objects.get(id=tid)
-    return render(request, 'update.html', {'id': tid})
+    dimg=Doctor.objects.all()
+    return render(request, 'update.html', {'id': tid,'image':dimg})
 
 
 def updatedata(request):
@@ -78,10 +81,21 @@ def updatedata(request):
         password = make_password(request.POST.get('password'))
         email = request.POST.get('email')
         catagory = request.POST.get('catagory')
-        image=request.FILES.get('image')
-        Doctor.objects.filter(id=tid).update(name=name,degree=degree,contact=contact,password=password,email=email,catagory=catagory,image=image)
-        return redirect('/table/')
+        image = request.FILES.get('image')
+        Doctor.objects.filter(id=tid).update(name=name, degree=degree, contact=contact,
+                                             password=password, email=email, catagory=catagory, image=image)
+        return redirect('/urltable/')
 
-def delete(request,tid):
+
+def delete(request, tid):
     Doctor.objects.filter(id=tid).delete()
-    return redirect('/table/')
+    return redirect('/urltable/')
+
+
+def urltable(request):
+    doctordata = Doctor.objects.all()
+    return render(request, 'table.html', {'ddata': doctordata})
+
+
+def urlregistration(request):
+    return render(request,'registration.html')
